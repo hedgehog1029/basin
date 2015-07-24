@@ -24,8 +24,9 @@ public class CommandManager {
 	
 	public boolean runCommand(String identifer, CommandSender sender, Command cmd, String label, String[] args) {
 		for (ManagedCommand c : this.commands) {
-			if (c.getCommandIdentifier() == identifer)
+			if (c.getCommandIdentifier().equalsIgnoreCase(cmd.getName())) {
 				return c.runCommand(sender, cmd, label, args);
+			}
 		}
 		return true;
 	}
